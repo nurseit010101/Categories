@@ -2,12 +2,25 @@
 {% block title %}Main{% endblock %}
 {% block content %}
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+
+
+
+{% for y in category %}
+<h1>{{y.title}}</h1>
+<div class="d-flex">
+  {% for i in meals %}
+  {% if i.Categry == y %}
+  <div class="card" style="width: 18rem;">
+    <img src="{{i.image.url}}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title">{{i.title}}</h5>
+      <p class="card-text">{{i.description}}</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% endfor %}
 {% endblock %}
